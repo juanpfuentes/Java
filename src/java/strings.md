@@ -169,14 +169,14 @@ https://www.w3schools.com/java/java_strings.asp
 
 Aquí te doy 6 ejercicios relacionados con la clase String en Java para practicar:
 
-    Escribir un programa que invierta el orden de los caracteres de una cadena dada.
+Escribir una función que invierta el orden de los caracteres de una cadena dada. invertir("hola")-->"aloh"
 
-    Escribir un programa que cuente el número de veces que se repite un carácter específico en una cadena dada.
+Escribir una función que cuente el número de veces que se repite un carácter específico en una cadena dada. contarChar("gola que tal",'a')-->2
 
-    Escribir un programa que elimine los espacios en blanco al principio y al final de una cadena dada.
+Escribir una función que elimine los espacios en blanco al principio y al final de una cadena dada. sinEspacios("  cadena  ")-->cadena
 
-    Escribir un programa que compruebe si una cadena es un palíndromo (una palabra o frase que se lee igual de izquierda a derecha y de derecha a izquierda).
+Escribir una función que compruebe si una cadena es un palíndromo (una palabra o frase que se lee igual de izquierda a derecha y de derecha a izquierda). palindromo("hola")--> false palindromo("ana")-->true
 
-    Escribir un programa que elimine todas las ocurrencias de una subcadena específica de una cadena dada.
+Escribir una función que elimine todas las ocurrencias de una subcadena específica de una cadena dada. eliminar("que queso es un paquete","que")-->" so es un pate"
 
-    Escribir un programa que reemplace todas las ocurrencias de un carácter específico en una cadena dada con otro carácter.
+Escribir una función que reemplace todas las ocurrencias de un carácter específico en una cadena dada con otro carácter. cambiar("hola que tal","a","@")-->"hol@ que t@l"
