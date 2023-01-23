@@ -18,13 +18,17 @@
 ## Tutoriales
 
 https://guru99.es/java-tutorial/
+
 https://www.w3schools.com/java/default.asp
+
 https://www.javatpoint.com/java-tutorial
+
 https://www.tutorialspoint.com/java/index.htm
 
 En castellano
 
 https://www.programarya.com/Cursos/Java
+
 https://www.pildorasinformaticas.es/course-cat/java_se/
 
 ###  Conceptos básicos
@@ -33,13 +37,13 @@ https://www.pildorasinformaticas.es/course-cat/java_se/
  
 ###  Programación funcional y tipos avanzados
 
-:scroll: - [Métodos](https://www.tutorialspoint.com/java/java_methods.htm, https://www.w3schools.com/java/java_methods.asp)
+:scroll: - [Métodos](metodos.md)
 
-:scroll: - [String](https://www.tutorialspoint.com/java/java_strings.htm, https://www.javatpoint.com/java-string, https://www.w3schools.com/java/java_strings.asp)
+:scroll: - [String](strings.md)
 
-:scroll: - [Array](https://www.tutorialspoint.com/java/java_arrays.htm, https://www.javatpoint.com/array-in-java, https://www.w3schools.com/java/java_arrays.asp)
+:scroll: - [Array](arrays.md)
 
-:scroll: - [Date/Time](https://www.tutorialspoint.com/java/java_date_time.htm)
+:scroll: - [Date/Time](date_time.md)
 
 ###  Programación orientada a objetos (OOP)
 
@@ -47,7 +51,7 @@ https://www.pildorasinformaticas.es/course-cat/java_se/
 
 :scroll: - [Composición y herencia](herencia.md)
 
-:scroll: - [Paquetes](https://www.tutorialspoint.com/java/java_packages.htm, https://www.javatpoint.com/package, https://www.w3schools.com/java/java_packages.asp)
+:scroll: - [Paquetes] (paquetes.md)
  
 ###  Colecciones genéricas
 
