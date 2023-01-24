@@ -268,6 +268,38 @@ https://www.w3schools.com/java/java_modifiers.asp
 
 https://www.javatpoint.com/access-modifiers
 
+### Getters y setters ###
+
+Los getters y los setters son métodos utilizados para obtener (get) y establecer (set) el valor de una propiedad o atributo de una clase en Java. Los getters devuelven el valor de la propiedad, mientras que los setters establecen un nuevo valor para la propiedad. Los getters y los setters se utilizan para proteger los atributos de una clase de posibles accesos no autorizados y modificaciones no deseadas.
+
+Un ejemplo de una clase con un getter y un setter para un atributo "nombre" sería el siguiente:
+
+```
+class Persona {
+    private String nombre;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+}
+```
+
+En este ejemplo, el atributo "nombre" es privado y solo se puede acceder a él a través de los métodos públicos "getNombre" y "setNombre".
+Por ejemplo, si quieres obtener el nombre de una persona, primero debes crear una instancia de la clase Persona y luego llamar el metodo getNombre()
+
+```
+Persona p1 = new Persona();
+p1.setNombre("Juan");
+String nombre = p1.getNombre();
+```
+
+
+De esta manera, aseguramos que no se pueda modificar el atributo de una manera no deseada.
+
 
 ### Ejercicios ###
 

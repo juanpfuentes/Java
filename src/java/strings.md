@@ -167,16 +167,18 @@ https://www.w3schools.com/java/java_strings.asp
 
 ## Ejercicios ##
 
-Aquí te doy 6 ejercicios relacionados con la clase String en Java para practicar:
+Aquí te doy algunos ejercicios relacionados con la clase String en Java para practicar:
+
+Escribir una función que elimine todas las ocurrencias de una subcadena específica de una cadena dada. eliminar("que queso es un paquete","que")-->" so es un pate"
+
+Escribir una función que reemplace todas las ocurrencias de un carácter específico en una cadena dada con otro carácter. cambiar("hola que tal","a","@")-->"hol@ que t@l"
 
 Escribir una función que invierta el orden de los caracteres de una cadena dada. invertir("hola")-->"aloh"
 
 Escribir una función que cuente el número de veces que se repite un carácter específico en una cadena dada. contarChar("gola que tal",'a')-->2
 
-Escribir una función que elimine los espacios en blanco al principio y al final de una cadena dada. sinEspacios("  cadena  ")-->cadena
+Escribir una función que elimine los espacios en blanco al principio y al final de una cadena dada, y que si hay espacios dobles en el interior los cambie por un solo espacio. sinEspacios("  hola    que  tal  ")-->"hola que tal"
 
 Escribir una función que compruebe si una cadena es un palíndromo (una palabra o frase que se lee igual de izquierda a derecha y de derecha a izquierda). palindromo("hola")--> false palindromo("ana")-->true
 
-Escribir una función que elimine todas las ocurrencias de una subcadena específica de una cadena dada. eliminar("que queso es un paquete","que")-->" so es un pate"
-
-Escribir una función que reemplace todas las ocurrencias de un carácter específico en una cadena dada con otro carácter. cambiar("hola que tal","a","@")-->"hol@ que t@l"
+Escribir una función que nos cuente las vocales que tiene una cadena. vocales("Alegría")-->4
