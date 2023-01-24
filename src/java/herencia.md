@@ -271,6 +271,36 @@ class Car implements Movable, Electric{
 
 En este ejemplo se ve como la clase Car implementa dos interfaces Movable y Electric.
 
+A partir de Java 8, se introdujo una nueva característica llamada métodos default o métodos con implementación predeterminada en interfaces, eso permite a los desarrolladores agregar una implementación por defecto a los métodos declarados en una interface.
+
+Un ejemplo de esto es el siguiente:
+
+```
+interface Operaciones {
+    double suma(double a, double b);
+    double resta(double a, double b);
+    default double multiplicacion(double a, double b) {
+        return a * b;
+    }
+}
+```
+
+En este ejemplo, la interface "Operaciones" tiene tres métodos, dos de los cuales (suma y resta) deben ser implementados por las clases que implementen la interface, y uno (multiplicacion) tiene una implementación por defecto, de tal forma que las clases que implementen esta interfaz no son obligadas a tener una implementación específica para este método.
+
+```
+class Calculadora implements Operaciones {
+    public double suma(double a, double b) {
+        return a + b;
+    }
+    public double resta(double a, double b) {
+        return a - b;
+    }
+}
+```
+
+En este ejemplo, la clase "Calculadora" implementa la interface "Operaciones" y especifica las implementaciones para los métodos "suma" y "resta", pero no es necesario especificar una implementación para el método "multiplicacion" ya que ya tiene una implementación predeterminada en la interface.
+
+Es importante mencionar que si una clase que implementa la interfaz quiere darle una implementación específica al método default, entonces puede hacerlo, ya que la implementación predeterminada es solo un valor por defecto.
 
 https://www.tutorialspoint.com/java/java_interfaces.htm
 
