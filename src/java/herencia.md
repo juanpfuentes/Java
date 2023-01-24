@@ -271,6 +271,8 @@ class Car implements Movable, Electric{
 
 En este ejemplo se ve como la clase Car implementa dos interfaces Movable y Electric.
 
+### Implementación por defecto ###
+
 A partir de Java 8, se introdujo una nueva característica llamada métodos default o métodos con implementación predeterminada en interfaces, eso permite a los desarrolladores agregar una implementación por defecto a los métodos declarados en una interface.
 
 Un ejemplo de esto es el siguiente:
@@ -301,6 +303,35 @@ class Calculadora implements Operaciones {
 En este ejemplo, la clase "Calculadora" implementa la interface "Operaciones" y especifica las implementaciones para los métodos "suma" y "resta", pero no es necesario especificar una implementación para el método "multiplicacion" ya que ya tiene una implementación predeterminada en la interface.
 
 Es importante mencionar que si una clase que implementa la interfaz quiere darle una implementación específica al método default, entonces puede hacerlo, ya que la implementación predeterminada es solo un valor por defecto.
+
+### Herencia en interfaces ###
+
+En Java se puede tener herencia entre interfaces mediante la palabra clave "extends". Una interface puede extender otra interface, lo que significa que la interfaz "hija" hereda todos los métodos de la interfaz "padre".
+
+Un ejemplo de herencia entre interfaces sería el siguiente:
+
+Copy code
+interface Padre {
+    void metodoPadre();
+}
+
+interface Hija extends Padre {
+    void metodoHija();
+}
+En este ejemplo, la interface "Hija" extiende a la interface "Padre" y hereda todos los métodos de "Padre", por lo que deberá implementar tanto el métodoPadre() como el metodoHija()
+
+Copy code
+class MiClase implements Hija {
+    public void metodoPadre(){
+        //Implementacion
+    }
+    public void metodoHija(){
+        //Implementacion
+    }
+}
+En este ejemplo, la clase "MiClase" implementa la interface "Hija" y deberá proporcionar implementaciones para ambos métodos, el metodoPadre() y el metodoHija().
+
+La herencia entre interfaces es útil para definir un comportamiento específico que se espera que varias clases implementen, y también ayuda a organizar el código al agrupar métodos relacionados en interfaces separadas.
 
 https://www.tutorialspoint.com/java/java_interfaces.htm
 
