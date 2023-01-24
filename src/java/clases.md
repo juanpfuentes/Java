@@ -184,6 +184,90 @@ https://www.javatpoint.com/java-constructor
 
 https://www.w3schools.com/java/java_constructors.asp
 
+### Sobrecarga de constructores ###
+
+La sobrecarga de constructores en Java es una técnica que permite tener varios constructores con diferentes parámetros en una misma clase. Cada constructor tiene una firma diferente, es decir, un conjunto diferente de parámetros.
+
+La sobrecarga de constructores se utiliza para proporcionar diferentes formas de crear una instancia de una clase. Por ejemplo, podrías tener un constructor que no requiere parámetros y otro constructor que requiere varios parámetros. Cada vez que se crea una instancia de una clase, se utiliza el constructor apropiado en función de los parámetros proporcionados.
+
+Un ejemplo de sobrecarga de constructores en una clase "Persona" sería el siguiente:
+
+```
+class Persona {
+    private String nombre;
+    private int edad;
+
+    // Constructor sin parámetros
+    public Persona() {
+        this.nombre = "";
+        this.edad = 0;
+    }
+
+    // Constructor con parámetros
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+}
+```
+
+En este ejemplo, la clase Persona tiene dos constructores: uno sin parámetros y otro con dos parámetros (nombre y edad).
+Al crear una instancia de la clase Persona, se puede utilizar cualquiera de los dos constructores de acuerdo a lo que se necesite:
+
+```
+// Creando una persona sin especificar nombre ni edad
+Persona p1 = new Persona();
+
+// Creando una persona especificando nombre y edad
+Persona p2 = new Persona("Juan", 25);
+```
+
+La sobrecarga de constructores es una práctica común en Java ya que permite crear objetos de una clase de diferentes formas, y puede ser muy útil para la creación de objetos con diferentes características y comportamientos.
+
+Un ejemplo de utilizar la sobrecarga de constructores en Java para llamar a otro constructor dentro de una clase sería el siguiente:
+
+```
+class Persona {
+    private String nombre;
+    private int edad;
+    private String direccion;
+
+    // Constructor sin parámetros
+    public Persona() {
+        this("", 0, "");
+    }
+
+    // Constructor con dos parámetros
+    public Persona(String nombre, int edad) {
+        this(nombre, edad, "");
+    }
+
+    // Constructor con tres parámetros
+    public Persona(String nombre, int edad, String direccion) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.direccion = direccion;
+    }
+}
+```
+
+En este ejemplo, la clase Persona tiene tres constructores: uno sin parámetros, otro con dos parámetros (nombre y edad) y otro con tres parámetros (nombre, edad y dirección).
+El constructor sin parámetros llama al constructor con tres parámetros pasando valores vacíos, en cambio el constructor con dos parámetros llama al constructor con tres parámetros pasando valores vacios en el campo direccion.
+
+Al crear una instancia de la clase Persona, se puede utilizar cualquiera de los tres constructores de acuerdo a lo que se necesite:
+
+Copy code
+// Creando una persona sin especificar nombre ni edad ni direccion
+Persona p1 = new Persona();
+
+// Creando una persona especificando nombre y edad
+Persona p2 = new Persona("Juan", 25);
+
+// Creando una persona especificando nombre, edad y direccion
+Persona p3 = new Persona("Juan", 25, "Calle 123");
+De esta manera, se puede reutilizar el código del constructor con tres parámetros y evitar escribir código repetitivo en los constructores con menos parámetros.
+Es una buena práctica utilizar la sobrecarga de constructores para llamar a otros constructores dentro de la misma clase, ya que permite una mejor organización y mantenimiento del código.
+
 ### this ###
 
 En Java, la palabra "this" hace referencia al objeto actual de una clase en el que se está ejecutando un método o un constructor. Se utiliza para acceder a los atributos y métodos de la clase desde dentro de un método o constructor.
