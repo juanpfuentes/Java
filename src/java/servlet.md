@@ -41,7 +41,21 @@ https://www.tutorialspoint.com/servlets/servlets_overview.htm
 
 https://www.javatpoint.com/servlet-tutorial
 
-[Ciclo de vida] (https://www.tutorialspoint.com/servlets/servlets-life-cycle.htm, https://www.javatpoint.com/life-cycle-of-a-servlet)
+### Ciclo de vida ###
+
+El ciclo de vida de un servlet en Java se refiere al proceso por el cual un servlet es creado, inicializado, utilizado para procesar solicitudes y finalmente destruido.
+
+1.    Creación: Cuando un servlet es cargado por primera vez por un servidor web, se crea una instancia de la clase del servlet. Esta instancia es creada utilizando el constructor sin argumentos de la clase.
+
+1.    Inicialización: Después de que una instancia del servlet ha sido creada, el servidor web llama al método init() del servlet. El método init() se utiliza para realizar cualquier configuración o inicialización necesaria antes de que el servlet comience a procesar solicitudes.
+
+1.    Manejo de solicitudes: Una vez que un servlet ha sido inicializado, está listo para procesar solicitudes. Cada vez que el servidor web recibe una solicitud para el servlet, llama al método service() del servlet. El método service() a su vez llama al método apropiado (doGet, doPost, etc) para manejar la solicitud. El servlet procesa la solicitud y genera una respuesta adecuada.
+
+1.    Destrucción: Cuando el servidor web decide descargar un servlet (por ejemplo, debido a un cambio en la configuración o un reinicio del servidor), llama al método destroy() del servlet. El método destroy() se utiliza para realizar cualquier limpieza necesaria antes de que la instancia del servlet sea eliminada.
+
+https://www.tutorialspoint.com/servlets/servlets-life-cycle.htm
+
+https://www.javatpoint.com/life-cycle-of-a-servlet
 
 [Ejemplos] (https://www.javatpoint.com/steps-to-create-a-servlet-using-tomcat-server, https://www.tutorialspoint.com/servlets/servlets-first-example.htm)
 
