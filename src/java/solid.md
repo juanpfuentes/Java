@@ -133,7 +133,89 @@ class CreditCardPayment implements Payment {
  
  https://www.geeksforgeeks.org/open-closed-principle-in-java-with-examples/?ref=rp
 
-[Liskov Substitution] (https://howtodoinjava.com/best-practices/solid-principles/#LSP, https://www.baeldung.com/java-liskov-substitution-principle)
+### Liskov Substitution ###
+
+El principio de Sustitución de Liskov (LSP, por sus siglas en inglés) es un principio de diseño de programación que se basa en que si una clase es una subclase de otra, entonces debería ser posible utilizar instancias de la subclase en lugar de la superclase sin causar problemas. Es decir, una subclase debe ser capaz de reemplazar completamente a su superclase.
+
+Ejemplos en Java:
+
+1.    Un ejemplo común es el uso de una clase Rectangle y una clase Square. Square es una subclase de Rectangle, por lo que debería ser posible utilizar un objeto Square en lugar de un objeto Rectangle sin causar problemas. Sin embargo, si la clase Square tiene un método setWidth que no establece el valor de la propiedad height, no cumpliría el principio LSP.
+
+2.    Otro ejemplo seria una clase Animal y una clase Gato. Gato es una subclase de Animal, por lo que debería ser posible utilizar un objeto Gato en lugar de un objeto Animal sin causar problemas. Sin embargo, si la clase Gato tiene un método maullar() que no esta en la clase Animal, no cumpliría el principio LSP.
+
+3.    Un último ejemplo es una clase Operación y una clase Suma. Suma es una subclase de Operación, por lo que debería ser posible utilizar un objeto Suma en lugar de un objeto Operación sin causar problemas. Sin embargo, si la clase Suma tiene un método sumar() que no esta en la clase Operación, no cumpliría el principio LSP.
+
+Aquí te dejo un ejemplo en Java que ilustra el uso del principio de Sustitución de Liskov. En este ejemplo se tiene una clase Shape, que es la superclase y dos subclases: Circle y Square.
+
+```
+class Shape {
+    public void draw() {
+        System.out.println("Dibujando forma genérica");
+    }
+}
+
+class Circle extends Shape {
+    public void draw() {
+        System.out.println("Dibujando círculo");
+    }
+}
+
+class Square extends Shape {
+    public void draw() {
+        System.out.println("Dibujando cuadrado");
+    }
+}
+
+public class Main {
+    public static void drawShape(Shape shape) {
+        shape.draw();
+    }
+
+    public static void main(String[] args) {
+        Shape circle = new Circle();
+        Shape square = new Square();
+        drawShape(circle); // imprime "Dibujando círculo"
+        drawShape(square); // imprime "Dibujando cuadrado"
+    }
+}
+```
+
+En este ejemplo, se tiene un método drawShape() que toma como parámetro una instancia de la clase Shape. Dentro de este método, se llama al método draw() de la instancia de Shape. Sin embargo, gracias al principio de Sustitución de Liskov, es posible pasar tanto un objeto Circle como un objeto Square a este método sin causar problemas, ya que ambos objetos son instancias de una subclase de Shape y tienen un método draw() que se comporta de forma esperada.
+
+Aquí te dejo un ejemplo en Java que ilustra cómo romper el principio de Sustitución de Liskov. En este ejemplo se tiene una clase Bird, que es la superclase y una subclase: Penguin.
+
+```
+class Bird {
+    public void fly() {
+        System.out.println("Volando");
+    }
+}
+
+class Penguin extends Bird {
+    public void fly() {
+        throw new UnsupportedOperationException("Los pingüinos no pueden volar");
+    }
+}
+
+public class Main {
+    public static void makeFly(Bird bird) {
+        bird.fly();
+    }
+
+    public static void main(String[] args) {
+        Bird penguin = new Penguin();
+        makeFly(penguin); // lanza UnsupportedOperationException
+    }
+}
+```
+
+En este ejemplo, se tiene un método makeFly() que toma como parámetro una instancia de la clase Bird. Dentro de este método, se llama al método fly() de la instancia de Bird. Sin embargo, al pasar un objeto Penguin a este método, se lanza una excepción, lo que viola el principio de Sustitución de Liskov, ya que no se esperaba que ocurriera esto al pasar una instancia de una subclase de Bird. Esa es la razón que en este caso no se cumple el principio LSP, ya que al utilizar un objeto Penguin en lugar de un objeto Bird ha causado un problema.
+
+https://www.adictosaltrabajo.com/2014/10/24/solid-3/
+
+https://howtodoinjava.com/best-practices/solid-principles/#LSP
+
+https://www.baeldung.com/java-liskov-substitution-principle
 
 [Interface Segregation] (https://howtodoinjava.com/best-practices/solid-principles/#ISP, https://www.baeldung.com/java-interface-segregation, https://www.javaguides.net/2018/02/interface-segregation-principle.html)
 
