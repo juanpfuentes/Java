@@ -310,7 +310,7 @@ En Java se puede tener herencia entre interfaces mediante la palabra clave "exte
 
 Un ejemplo de herencia entre interfaces sería el siguiente:
 
-Copy code
+```
 interface Padre {
     void metodoPadre();
 }
@@ -318,9 +318,11 @@ interface Padre {
 interface Hija extends Padre {
     void metodoHija();
 }
+```
+
 En este ejemplo, la interface "Hija" extiende a la interface "Padre" y hereda todos los métodos de "Padre", por lo que deberá implementar tanto el métodoPadre() como el metodoHija()
 
-Copy code
+```
 class MiClase implements Hija {
     public void metodoPadre(){
         //Implementacion
@@ -329,6 +331,8 @@ class MiClase implements Hija {
         //Implementacion
     }
 }
+```
+
 En este ejemplo, la clase "MiClase" implementa la interface "Hija" y deberá proporcionar implementaciones para ambos métodos, el metodoPadre() y el metodoHija().
 
 La herencia entre interfaces es útil para definir un comportamiento específico que se espera que varias clases implementen, y también ayuda a organizar el código al agrupar métodos relacionados en interfaces separadas.

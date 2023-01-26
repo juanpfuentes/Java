@@ -51,15 +51,17 @@ https://www.pildorasinformaticas.es/course-cat/java_se/
 
 :scroll: - [Composición y herencia](herencia.md)
 
-:scroll: - [Paquetes] (paquetes.md)
+:scroll: - [Paquetes](paquetes.md)
  
 ###  Colecciones genéricas
 
 :scroll: - [Genéricas](genericas.md)
 
+:scroll: - [Excepciones](excepciones.md)
+
 ###  Ficheros y Bases de datos con JDBC
 
-:scroll: - [Ficheros](https://www.tutorialspoint.com/java/java_files_io.htm, https://www.javatpoint.com/java-fileoutputstream-class, https://www.w3schools.com/java/java_files.asp)
+:scroll: - [Ficheros](ficheros.md)
 
 :scroll: - [JDBC](jdbc.md)
 
