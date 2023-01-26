@@ -2,7 +2,7 @@
 
 ## Colecciones ##
 
-[ArrayList]
+### ArrayList
 
 Sí, un ArrayList en Java es una implementación de la interfaz List que permite almacenar una colección de elementos ordenados. Es similar a un array, pero tiene algunas ventajas adicionales, como la capacidad de ajustar dinámicamente su tamaño.
 
@@ -162,7 +162,7 @@ https://www.javatpoint.com/java-arraylist
 
 https://www.w3schools.com/java/java_arraylist.asp
 
-[LinkedList] 
+### LinkedList ###
 
 LinkedList es una clase en Java que implementa la interfaz List y utiliza un enlace simple para almacenar elementos. Cada elemento en una LinkedList tiene un enlace al siguiente elemento en la lista.
 
@@ -292,7 +292,7 @@ https://www.javatpoint.com/java-linkedlist
 
 https://www.w3schools.com/java/java_linkedlist.asp
 
-[HashMap] 
+### HashMap ###
 
 HashMap es una clase en Java que implementa la interfaz Map. Un HashMap almacena elementos en forma de pares clave-valor, en donde la clave es única y se utiliza para acceder al valor correspondiente.
 
@@ -431,7 +431,7 @@ https://www.javatpoint.com/java-hashmap
 
 https://www.w3schools.com/java/java_hashmap.asp
 
-[HashSet] 
+### HashSet ###
 
 En Java, un HashSet es una implementación de un conjunto (set) que utiliza una tabla hash para almacenar sus elementos. Los elementos en un HashSet no están ordenados, y no se permiten elementos duplicados.
 
@@ -556,7 +556,7 @@ https://www.w3schools.com/java/java_hashset.asp
 
 ## Genéricos ##
 
-[Genéricos]
+### Genéricos ###
 
 Los tipos genéricos en Java son un mecanismo de programación que permite crear clases y métodos parametrizados. Esto significa que en lugar de especificar un tipo específico de datos, se especifica un parámetro de tipo que puede ser reemplazado por un tipo específico al crear una instancia de la clase o al invocar el método.
 
