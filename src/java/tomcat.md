@@ -22,6 +22,4 @@ Para instalar Apache Tomcat en Windows y enlazarlo con Eclipse, sigue estos paso
 
 Nota: Los pasos y las pantallas pueden variar dependiendo de la versión de Eclipse y Tomcat que estés utilizando.
 
-[Introducción](http://blog.oscarscode.com/es/java-es/introduccion-a-mvc-con-servlets-y-jsp/, https://www.javatpoint.com/MVC-in-jsp, https://www.guru99.com/jsp-mvc.html)
-
-[Ejemplos] (https://www.baeldung.com/mvc-servlet-jsp, https://www.it.uc3m.es/jaf/cw/practicas/7-mvc/)
+<img src='../assets/img/tomcat01.png' />
