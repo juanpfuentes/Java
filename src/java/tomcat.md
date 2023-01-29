@@ -23,3 +23,6 @@ Para instalar Apache Tomcat en Windows y enlazarlo con Eclipse, sigue estos paso
 Nota: Los pasos y las pantallas pueden variar dependiendo de la versión de Eclipse y Tomcat que estés utilizando.
 
 <img src='../assets/img/tomcat01.png' />
+<img src='../assets/img/tomcat02.png' />
+<img src='../assets/img/tomcat03.png' />
+<img src='../assets/img/tomcat04.png' />
