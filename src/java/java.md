@@ -81,6 +81,8 @@ https://www.pildorasinformaticas.es/course-cat/java_se/
 
 :scroll: - [DAO](dao.md)
 
+:scroll: - [Hibernate](hibernate.md)
+
 :scroll: - [MVC](mvc.md)
 
 <br>
