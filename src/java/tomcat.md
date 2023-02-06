@@ -5,6 +5,7 @@
 Para instalar Apache Tomcat en Windows y enlazarlo con Eclipse, sigue estos pasos:
 
 1.    Descarga la última versión de Apache Tomcat desde el sitio web oficial (https://tomcat.apache.org/download-90.cgi) y descomprime el archivo descargado en una carpeta en tu sistema.
+Versión 10 para windows: https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.27/bin/apache-tomcat-10.0.27-windows-x64.zip
 
 1.    Abre Eclipse y ve a "Window" -> "Preferences" -> "Server" -> "Runtime Environments". Haz clic en el botón "Add" para agregar un nuevo servidor.
 

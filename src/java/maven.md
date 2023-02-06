@@ -14,6 +14,25 @@ https://www.genbeta.com/desarrollo/que-es-maven
 
 https://www.javiergarzas.com/2014/06/maven-en-10-min.html
 
+## Eclipse y Maven ##
+
+Para crear un proyecto Maven con Eclipse, debes seguir los siguientes pasos:
+
+Abrir Eclipse y hacer clic en "File" -> "New" -> "Project".
+Seleccionar "Maven Project" en la lista de proyectos disponibles y hacer clic en "Next".
+Seleccionar la opción "Create a simple project (skip archetype selection)" y hacer clic en "Next".
+Ingresar los detalles del proyecto, como el nombre del proyecto, el grupo ID y la versión.
+Hacer clic en "Finish".
+Una vez creado el proyecto Maven, puedes agregar dependencias a través del archivo pom.xml. Puedes hacer esto haciendo clic derecho en el proyecto -> "Maven" -> "Add Dependency" y buscando la dependencia que necesitas.
+
+Maven automatiza el proceso de descargar y gestionar las dependencias de un proyecto, lo que significa que puedes centrarte en escribir el código de tu aplicación sin preocuparte por la gestión de las dependencias.
+
+## Arquetipos ##
+
+Un arquetipo es una plantilla predefinida que proporciona una estructura y un conjunto de archivos básicos para un proyecto en particular. Por ejemplo, si deseas crear un proyecto web Java con Spring Boot, puedes seleccionar el arquetipo spring-boot-starter-web. De esta manera, Maven creará una estructura de proyecto que incluye todas las dependencias necesarias para crear una aplicación web con Spring Boot.
+
+Una vez creado el proyecto, puedes agregar dependencias a través del archivo pom.xml y escribir el código en el proyecto según tus necesidades.
+
 ## Dependencias en Maven ##
 
 Para agregar una dependencia en Maven, debes editar el archivo pom.xml de tu proyecto y agregar la dependencia dentro de la etiqueta "dependencies". La sintaxis para agregar una dependencia es la siguiente:
