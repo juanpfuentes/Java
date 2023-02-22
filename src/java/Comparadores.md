@@ -124,6 +124,8 @@ Alice (25)
 Charlie (30)
 ```
 
+## Comparable ##
+
 Para implementar la interfaz Comparable en una clase personalizada en Java, debes definir el método compareTo en la clase. El método compareTo toma un objeto de la misma clase como argumento y devuelve un número entero que indica si el objeto actual es menor, igual o mayor que el objeto pasado como argumento. El número entero debe ser negativo si el objeto actual es menor que el objeto pasado como argumento, cero si son iguales y positivo si el objeto actual es mayor que el objeto pasado como argumento.
 
 Aquí hay un ejemplo de cómo se puede implementar Comparable en una clase personalizada llamada Person:
