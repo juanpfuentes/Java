@@ -256,6 +256,156 @@ try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("example.txt"))) 
 }
 ```
 
+## Path ##
+
+La clase Path en Java es una parte de la API de Java NIO 2 y se utiliza para trabajar con rutas de archivos y directorios. La clase Path se puede usar para manipular rutas de archivos y directorios independientemente de la sintaxis específica del sistema operativo.
+
+A continuación, se presentan algunos ejemplos de cómo se puede utilizar la clase Path de Files en Java:
+
+    Crear un objeto Path para una ruta de archivo:
+
+java
+
+Path path = Paths.get("C:/Users/Username/Documents/example.txt");
+
+    Obtener la ruta absoluta de un archivo o directorio:
+
+java
+
+Path path = Paths.get("example.txt");
+Path absolutePath = path.toAbsolutePath();
+
+    Obtener la ruta de un archivo o directorio relativo a otro archivo o directorio:
+
+java
+
+Path base = Paths.get("C:/Users/Username/Documents");
+Path relativePath = base.relativize(Paths.get("C:/Users/Username/Documents/example.txt"));
+
+    Obtener el nombre de un archivo o directorio de una ruta:
+
+java
+
+Path path = Paths.get("C:/Users/Username/Documents/example.txt");
+Path fileName = path.getFileName();
+
+    Obtener el directorio padre de una ruta:
+
+java
+
+Path path = Paths.get("C:/Users/Username/Documents/example.txt");
+Path parentDir = path.getParent();
+
+    Combinar dos rutas para formar una nueva ruta:
+
+java
+
+Path basePath = Paths.get("C:/Users/Username/Documents");
+Path filePath = Paths.get("example.txt");
+Path combinedPath = basePath.resolve(filePath);
+
+    Comprobar si una ruta representa un archivo o un directorio:
+
+java
+
+Path path = Paths.get("C:/Users/Username/Documents/example.txt");
+boolean isFile = Files.isRegularFile(path);
+boolean isDirectory = Files.isDirectory(path);
+
+Estos son solo algunos ejemplos de cómo se puede utilizar la clase Path de Files en Java. La API de Java NIO 2 ofrece muchas más funciones para trabajar con rutas de archivos y directorios en Java.
+
+## Files ##
+
+La clase Files en Java proporciona varios métodos útiles para trabajar con archivos y directorios en el sistema de archivos. A continuación se presentan algunos ejemplos de cómo se puede utilizar la clase Files en Java:
+
+    Comprobar si un archivo o directorio existe:
+
+java
+
+Path path = Paths.get("C:/Users/Username/Documents/example.txt");
+boolean exists = Files.exists(path);
+
+    Crear un nuevo archivo:
+
+java
+
+Path path = Paths.get("C:/Users/Username/Documents/example.txt");
+Files.createFile(path);
+
+    Crear un nuevo directorio:
+
+java
+
+Path path = Paths.get("C:/Users/Username/Documents/newdir");
+Files.createDirectory(path);
+
+    Copiar un archivo:
+
+java
+
+Path source = Paths.get("C:/Users/Username/Documents/example.txt");
+Path target = Paths.get("C:/Users/Username/Documents/example-copy.txt");
+Files.copy(source, target);
+
+    Copiar un directorio y todo su contenido:
+
+java
+
+Path source = Paths.get("C:/Users/Username/Documents/old-dir");
+Path target = Paths.get("C:/Users/Username/Documents/new-dir");
+Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
+
+    Mover un archivo:
+
+java
+
+Path source = Paths.get("C:/Users/Username/Documents/example.txt");
+Path target = Paths.get("C:/Users/Username/Documents/new-location/example.txt");
+Files.move(source, target);
+
+    Eliminar un archivo o directorio:
+
+java
+
+Path path = Paths.get("C:/Users/Username/Documents/example.txt");
+Files.delete(path);
+
+    La clase Files en Java también proporciona métodos para leer y escribir archivos de texto. A continuación se presentan algunos ejemplos de cómo se puede utilizar la clase Files para leer y escribir archivos de texto:
+
+    Leer todo el contenido de un archivo de texto en una lista de cadenas:
+
+java
+
+Path path = Paths.get("C:/Users/Username/Documents/example.txt");
+List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+
+    Leer todo el contenido de un archivo de texto en una cadena:
+
+java
+
+Path path = Paths.get("C:/Users/Username/Documents/example.txt");
+String content = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
+
+    Escribir una cadena en un archivo de texto:
+
+java
+
+Path path = Paths.get("C:/Users/Username/Documents/example.txt");
+String content = "Esto es un ejemplo de texto que se va a escribir en un archivo.";
+Files.write(path, content.getBytes());
+
+    Escribir una lista de cadenas en un archivo de texto:
+
+java
+
+Path path = Paths.get("C:/Users/Username/Documents/example.txt");
+List<String> lines = Arrays.asList("Primera línea", "Segunda línea", "Tercera línea");
+Files.write(path, lines, StandardCharsets.UTF_8);
+
+En todos estos ejemplos, se utiliza la clase Paths para obtener un objeto Path que representa el archivo que se va a leer o escribir. Luego, se utiliza el método apropiado de la clase Files para leer o escribir el archivo.
+
+Es importante tener en cuenta que estos métodos no manejan explícitamente la codificación de caracteres. Por lo tanto, es importante especificar la codificación correcta al leer o escribir archivos de texto. En los ejemplos anteriores, se utiliza StandardCharsets.UTF_8 para especificar la codificación UTF-8.
+
 https://www.tutorialspoint.com/java/java_files_io.htm
 
 https://www.javatpoint.com/java-fileoutputstream-class
