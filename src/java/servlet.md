@@ -321,6 +321,46 @@ https://www.tutorialspoint.com/servlets/servlets-client-request.htm
 
 https://www.javatpoint.com/servletrequest
 
+### Variables de sesión ###
+
+Para usar variables de sesión en un servlet de Java, primero debes obtener el objeto HttpSession del objeto HttpServletRequest, que es el objeto que representa la solicitud HTTP que llega al servidor. Para hacer esto, debes llamar al método getSession() del objeto HttpServletRequest, como se muestra a continuación:
+
+```
+
+HttpSession session = request.getSession();
+```
+
+Una vez que tienes el objeto HttpSession, puedes guardar cualquier objeto Java en él utilizando el método setAttribute(), como se muestra a continuación:
+
+```
+session.setAttribute("nombreVariable", objetoJava);
+```
+
+El primer argumento es el nombre de la variable que quieres guardar en la sesión, y el segundo argumento es el objeto Java que quieres guardar.
+
+Para obtener el valor de una variable de sesión, debes llamar al método getAttribute() del objeto HttpSession, como se muestra a continuación:
+
+```
+Object objetoJava = session.getAttribute("nombreVariable");
+```
+
+El valor devuelto por el método getAttribute() es un objeto Java, por lo que debes convertirlo al tipo de objeto que deseas utilizar.
+
+Por ejemplo, si quieres guardar el nombre de usuario de un usuario en una variable de sesión, puedes hacerlo de la siguiente manera:
+
+```
+String username = "john";
+session.setAttribute("username", username);
+```
+
+Para obtener el valor de la variable de sesión del usuario, puedes hacerlo de la siguiente manera:
+
+```
+String username = (String) session.getAttribute("username");
+```
+
+Es importante tener en cuenta que las variables de sesión son específicas del usuario y no se comparten entre usuarios. También debes tener en cuenta que las variables de sesión se almacenan en la memoria del servidor, por lo que no deben ser utilizadas para almacenar grandes cantidades de datos.
+
 ### Server response ###
 
 El objeto HttpServletResponse es una clase proporcionada por el paquete javax.servlet.http y es utilizado para enviar una respuesta HTTP desde un servlet.
@@ -378,3 +418,70 @@ public class ResponseServlet extends HttpServlet {
 ```
 
 https://www.tutorialspoint.com/servlets/servlets-client-request.htm
+
+Para pasar un valor desde un servlet a una página JSP, puedes utilizar el objeto HttpServletRequest y el objeto RequestDispatcher.
+
+Aquí hay un ejemplo que muestra cómo pasar un valor desde un servlet a una página JSP:
+
+En el servlet, establece el valor que deseas pasar a la página JSP en un atributo del objeto HttpServletRequest utilizando el método setAttribute():
+
+```
+String message = "Hola desde el servlet";
+request.setAttribute("mensaje", message);
+```
+
+Obtén un objeto RequestDispatcher para la página JSP que deseas mostrar. Esto se hace utilizando el método getRequestDispatcher() del objeto ServletContext:
+
+```
+RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pagina.jsp");
+```
+
+Nota: Asegúrate de ajustar "/pagina.jsp" al nombre de la página JSP que deseas mostrar.
+
+Llama al método forward() del objeto RequestDispatcher para redirigir la solicitud a la página JSP:
+
+```
+dispatcher.forward(request, response);
+```
+
+En la página JSP, puedes obtener el valor que se pasó desde el servlet utilizando el objeto request y el método getAttribute():
+
+```
+<p><%=request.getAttribute("mensaje")%></p>
+```
+
+El código completo del servlet se vería así:
+
+```
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class MiServlet extends HttpServlet {
+
+   public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      String message = "Hola desde el servlet";
+      request.setAttribute("mensaje", message);
+
+      RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/pagina.jsp");
+      dispatcher.forward(request, response);
+   }
+}
+```
+
+El código completo de la página JSP se vería así:
+
+
+```
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+   <head>
+      <title>Página JSP</title>
+   </head>
+   <body>
+      <p><%=request.getAttribute("mensaje")%></p>
+   </body>
+</html>
+```
+
+Cuando el usuario solicita el servlet, se establece el valor "Hola desde el servlet" en un atributo del objeto HttpServletRequest utilizando el método setAttribute(). Luego, se obtiene un objeto RequestDispatcher para la página JSP y se llama al método forward() para redirigir la solicitud a la página JSP. En la página JSP, se obtiene el valor que se pasó desde el servlet utilizando el objeto request y el método getAttribute().

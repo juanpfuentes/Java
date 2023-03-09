@@ -398,7 +398,7 @@ Path path = Paths.get("C:/Users/Username/Documents/example.txt");
 String content = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
 ```
 
-    Escribir una cadena en un archivo de texto:
+Escribir una cadena en un archivo de texto:
 
 ```
 
@@ -407,7 +407,7 @@ String content = "Esto es un ejemplo de texto que se va a escribir en un archivo
 Files.write(path, content.getBytes());
 ```
 
-    Escribir una lista de cadenas en un archivo de texto:
+Escribir una lista de cadenas en un archivo de texto:
 
 ```
 Path path = Paths.get("C:/Users/Username/Documents/example.txt");
