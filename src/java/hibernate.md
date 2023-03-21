@@ -146,7 +146,191 @@ Algunas de las anotaciones más comunes que se utilizan en Hibernate son las sig
 
 @JoinColumn: Anotación que se utiliza para especificar la columna de unión entre dos entidades en una relación.
 
-Estas son solo algunas de las anotaciones más comunes que se utilizan en Hibernate para crear una entidad. Hay muchas otras anotaciones disponibles que se pueden utilizar para personalizar y optimizar el mapeo entre entidades y tablas de la base de datos.
+La anotación @Entity se utiliza para marcar una clase Java como una entidad, lo que significa que esta clase representa una tabla en una base de datos relacional. La anotación @Entity debe ser colocada encima de la declaración de la clase Java, como se muestra en el siguiente ejemplo:
+
+```
+
+@Entity
+@Table(name = "employee")
+public class Employee {
+    ...
+}
+```
+
+En este ejemplo, la clase Java Employee representa la tabla "employee" en una base de datos relacional. La anotación @Table se utiliza para especificar el nombre de la tabla en la base de datos que la clase Java debe representar.
+
+La anotación @Column se utiliza para mapear un atributo de una clase Java a una columna de la tabla correspondiente en la base de datos. La anotación @Column debe ser colocada encima del atributo que se desea mapear, como se muestra en el siguiente ejemplo:
+
+```
+@Entity
+@Table(name = "employee")
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+ 
+    @Column(name = "first_name")
+    private String firstName;
+ 
+    @Column(name = "last_name")
+    private String lastName;
+ 
+    @Column(name = "email")
+    private String email;
+    ...
+}
+```
+
+En este ejemplo, los atributos "firstName", "lastName" y "email" de la clase Java Employee están mapeados a las columnas correspondientes en la tabla "employee" de la base de datos. La anotación @Id se utiliza para marcar el atributo "id" como la clave primaria de la tabla, mientras que la anotación @GeneratedValue se utiliza para especificar cómo se generará el valor de la clave primaria automáticamente.
+
+La anotación @OneToMany en Hibernate se utiliza para establecer una relación uno a muchos entre dos entidades. Esto significa que una entidad tiene una colección de otra entidad. La anotación @OneToMany se coloca encima de la propiedad de la colección en la entidad principal y se especifica la propiedad mappedBy en la anotación @OneToMany para indicar la propiedad en la entidad secundaria que mapea la relación.
+
+Aquí hay un ejemplo de cómo usar la anotación @OneToMany en Hibernate:
+
+Supongamos que tenemos dos entidades: Book y Author. Cada libro tiene un solo autor, pero cada autor puede escribir muchos libros. Por lo tanto, hay una relación uno a muchos entre las entidades Book y Author. La entidad Book tiene una propiedad author que es una instancia de la entidad Author.
+
+La clase Book sería algo así:
+
+```
+
+@Entity
+public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String title;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
+
+    // getters and setters
+}
+```
+
+La clase Author sería algo así:
+
+```
+@Entity
+public class Author {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    private List<Book> books = new ArrayList<>();
+
+    // getters and setters
+}
+```
+
+En este ejemplo, la entidad Book tiene una propiedad author que se mapea a la entidad Author mediante una relación ManyToOne. En la entidad Author, la propiedad books es una colección de libros que se mapea a la entidad Book mediante una relación OneToMany.
+
+La propiedad mappedBy en la anotación @OneToMany se establece en "author" para indicar que la propiedad author en la entidad Book mapea esta relación. La propiedad cascade = CascadeType.ALL se utiliza para indicar que todas las operaciones de persistencia (guardar, actualizar, eliminar) realizadas en la entidad Author también se aplicarán a la colección de libros en la entidad Book.
+
+Entonces, si quisieras agregar un nuevo libro para un autor en particular, simplemente crearías un nuevo objeto Book, lo establecerías en la colección books en el objeto Author correspondiente y guardarías el objeto Author. Hibernate se encargará de las relaciones entre las dos entidades. Por ejemplo:
+
+```
+
+Author author = new Author();
+author.setName("J.K. Rowling");
+
+Book book1 = new Book();
+book1.setTitle("Harry Potter and the Philosopher's Stone");
+book1.setAuthor(author);
+
+Book book2 = new Book();
+book2.setTitle("Harry Potter and the Chamber of Secrets");
+book2.setAuthor(author);
+
+author.getBooks().add(book1);
+author.getBooks().add(book2);
+
+session.save(author);
+```
+
+En este ejemplo, creamos un nuevo autor y dos libros, y los agregamos a la colección de libros en el autor. Luego guardamos el objeto Author en la base de datos. Hibernate automáticamente establecerá las claves externas y guardará los registros en las tablas correspondientes.
+
+La anotación @ManyToMany en Hibernate se utiliza para establecer una relación muchos a muchos entre dos entidades. Esto significa que una entidad tiene una colección de otra entidad y viceversa. La anotación @ManyToMany se coloca en ambas entidades para indicar la relación.
+
+Aquí hay un ejemplo de cómo usar la anotación @ManyToMany en Hibernate:
+
+Supongamos que tenemos dos entidades: Book y Genre. Cada libro puede tener varios géneros, y cada género puede estar asociado con muchos libros. Por lo tanto, hay una relación muchos a muchos entre las entidades Book y Genre. La entidad Book tiene una colección de instancias de la entidad Genre, y la entidad Genre tiene una colección de instancias de la entidad Book.
+
+La clase Book sería algo así:
+
+```
+
+@Entity
+public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String title;
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+        name = "book_genre",
+        joinColumns = { @JoinColumn(name = "book_id") },
+        inverseJoinColumns = { @JoinColumn(name = "genre_id") }
+    )
+    private Set<Genre> genres = new HashSet<>();
+
+    // getters and setters
+}
+```
+
+La clase Genre sería algo así:
+
+```
+@Entity
+public class Genre {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    @ManyToMany(mappedBy = "genres")
+    private Set<Book> books = new HashSet<>();
+
+    // getters and setters
+}
+```
+
+En este ejemplo, la entidad Book tiene una colección de géneros que se mapea a la entidad Genre mediante una relación ManyToMany. En la entidad Genre, la propiedad books es una colección de libros que se mapea a la entidad Book mediante una relación ManyToMany.
+
+La anotación @JoinTable se utiliza para especificar la tabla de unión que se utiliza para mapear la relación ManyToMany. Las columnas joinColumns y inverseJoinColumns se utilizan para especificar las columnas que se utilizan para mapear la relación.
+
+La propiedad mappedBy en la anotación @ManyToMany en la entidad Genre se establece en "genres" para indicar que la colección de géneros en la entidad Book mapea esta relación.
+
+Entonces, si quisieras agregar un nuevo género para un libro en particular, simplemente crearías un nuevo objeto Genre, lo agregarías a la colección genres en el objeto Book correspondiente y guardarías el objeto Book. Hibernate se encargará de las relaciones entre las dos entidades. Por ejemplo:
+
+```
+Book book = new Book();
+book.setTitle("The Lord of the Rings");
+
+Genre genre1 = new Genre();
+genre1.setName("Fantasy");
+
+Genre genre2 = new Genre();
+genre2.setName("Adventure");
+
+book.getGenres().add(genre1);
+book.getGenres().add(genre2);
+
+genre1.getBooks().add(book);
+genre2.getBooks().add(book);
+
+session.save(book);
+```
+
+En este ejemplo, creamos un nuevo libro y dos géneros, y los agregamos a la colección de géneros en el libro. También agregamos el libro a la colección de libros en cada uno de los géneros correspondientes. Luego guardamos el objeto Book en la base de datos. Hibernate automáticamente establecerá las claves externas y guardará los registros en las tablas correspondientes.
+
 
 ## Crear sesión ##
 
@@ -393,6 +577,71 @@ public class ManageEmployee {
 }
 ```
 
+## Consultas ##
+
+En Hibernate, podemos utilizar la API de Session para crear consultas personalizadas para recuperar datos de la base de datos. La forma más común de crear consultas personalizadas es a través del método createQuery de la interfaz Session.
+
+La sintaxis básica para crear una consulta con createQuery es la siguiente:
+
+```
+
+Query query = session.createQuery("FROM MiEntidad WHERE propiedad = :valor");
+query.setParameter("valor", valor);
+List<MiEntidad> resultados = query.list();
+```
+
+En este ejemplo, estamos creando una consulta personalizada para la entidad MiEntidad, donde queremos recuperar todos los registros donde la propiedad es igual a un valor específico. Usamos la sintaxis de JPQL (Java Persistence Query Language) para definir la consulta, que es similar a SQL pero utiliza nombres de entidad y propiedad en lugar de nombres de tabla y columna.
+
+La consulta personalizada se asigna a un objeto Query, que podemos usar para establecer parámetros de consulta y ejecutar la consulta. En este caso, estamos estableciendo un parámetro llamado "valor" y luego usando el método list para recuperar los resultados de la consulta como una lista de objetos MiEntidad.
+
+Veamos algunos ejemplos más detallados de cómo utilizar createQuery en Hibernate:
+
+Consulta básica
+
+```
+Query query = session.createQuery("FROM MiEntidad");
+List<MiEntidad> resultados = query.list();
+```
+
+Este ejemplo muestra cómo recuperar todos los registros de la entidad MiEntidad sin ningún filtro específico. La consulta JPQL es simplemente "FROM MiEntidad".
+
+Consulta con filtro de propiedad
+
+```
+
+Query query = session.createQuery("FROM MiEntidad WHERE propiedad = :valor");
+query.setParameter("valor", valor);
+List<MiEntidad> resultados = query.list();
+```
+
+En este ejemplo, estamos recuperando todos los registros de la entidad MiEntidad donde la propiedad es igual a un valor específico. La consulta JPQL es "FROM MiEntidad WHERE propiedad = :valor". Usamos el método setParameter para establecer el valor del parámetro "valor".
+
+Consulta con ordenamiento
+
+```
+Query query = session.createQuery("FROM MiEntidad ORDER BY propiedad DESC");
+List<MiEntidad> resultados = query.list();
+```
+
+Este ejemplo muestra cómo recuperar todos los registros de la entidad MiEntidad y ordenarlos por una propiedad específica en orden descendente. La consulta JPQL es "FROM MiEntidad ORDER BY propiedad DESC".
+
+Consulta con paginación
+```
+Query query = session.createQuery("FROM MiEntidad");
+query.setFirstResult(0);
+query.setMaxResults(10);
+List<MiEntidad> resultados = query.list();
+```
+
+En este ejemplo, estamos recuperando los primeros 10 registros de la entidad MiEntidad utilizando la paginación. La consulta JPQL es "FROM MiEntidad". Usamos los métodos setFirstResult y setMaxResults para especificar la posición inicial de los resultados y el número máximo de resultados a recuperar.
+
+Consulta con agregación
+```
+Query query = session.createQuery("SELECT COUNT(*) FROM MiEntidad");
+Long cantidad = (Long) query.uniqueResult();
+```
+
+Este ejemplo muestra cómo recuperar la cantidad de registros de la entidad MiEntidad utilizando una consulta de agregación. La consulta JPQL es "SELECT COUNT(*) FROM MiEntidad". Usamos el método uniqueResult para obtener el resultado de la consulta como un objeto Long.
 
 https://www.javatpoint.com/hibernate-tutorial
 
