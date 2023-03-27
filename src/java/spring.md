@@ -70,10 +70,15 @@ En resumen, Spring Initializr es una herramienta muy útil para generar rápidam
 l archivo application.properties es un archivo de configuración muy útil en las aplicaciones de Spring que permite especificar una amplia variedad de configuraciones para la aplicación. Algunas de las opciones más comunes que se pueden configurar en application.properties son:
 
 server.port: especifica el puerto en el que se ejecutará el servidor web integrado de Spring Boot.
+
 spring.datasource.url, spring.datasource.username, spring.datasource.password: especifica la URL de la base de datos, el nombre de usuario y la contraseña para la conexión a una base de datos.
+
 spring.jpa.hibernate.ddl-auto: especifica el modo de generación de tablas de Hibernate para JPA (create, create-drop, update, validate, none).
+
 spring.jpa.show-sql: especifica si se deben mostrar o no las consultas SQL generadas por Hibernate.
+
 logging.level: especifica el nivel de registro para las diferentes clases de la aplicación (por ejemplo, logging.level.org.springframework.web=DEBUG para registrar las solicitudes web).
+
 spring.profiles.active: especifica los perfiles de Spring activos para la aplicación.
 Estas son solo algunas de las opciones más comunes que se pueden configurar en application.properties. Cada aplicación de Spring tendrá sus propias necesidades y requisitos de configuración, por lo que se pueden agregar otras opciones personalizadas en función de las necesidades específicas de la aplicación.
 
@@ -82,10 +87,15 @@ Estas son solo algunas de las opciones más comunes que se pueden configurar en 
 En las aplicaciones de Spring que utilizan una base de datos, es muy común configurar el DataSource (origen de datos) mediante el archivo application.properties. Algunas de las opciones de configuración más comunes para DataSource son:
 
 spring.datasource.url: especifica la URL de la base de datos. Por ejemplo: spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+
 spring.datasource.username: especifica el nombre de usuario para la conexión a la base de datos. Por ejemplo: spring.datasource.username=myuser
+
 spring.datasource.password: especifica la contraseña para la conexión a la base de datos. Por ejemplo: spring.datasource.password=mypassword
+
 spring.datasource.driver-class-name: especifica el nombre de la clase del controlador JDBC que se utilizará para la conexión a la base de datos. Por ejemplo: spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
 spring.datasource.validation-query: especifica la consulta SQL de validación que se utilizará para comprobar si la conexión con la base de datos está activa. Por ejemplo: spring.datasource.validation-query=SELECT 1
+
 Además de estas opciones, hay muchas otras opciones que se pueden configurar para DataSource en application.properties, como la cantidad máxima de conexiones, la cantidad máxima de conexiones inactivas, el tiempo de espera máximo para una conexión, entre otras opciones.
 
 Es importante tener en cuenta que las opciones de configuración pueden variar según la base de datos que se esté utilizando. Por ejemplo, en el caso de MySQL se utilizará la propiedad jdbc:mysql en spring.datasource.url, mientras que en el caso de PostgreSQL se utilizará jdbc:postgresql. Por lo tanto, es importante consultar la documentación correspondiente para configurar adecuadamente el DataSource.
